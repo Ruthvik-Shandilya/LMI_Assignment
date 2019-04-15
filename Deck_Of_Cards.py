@@ -6,18 +6,22 @@ final_cards=""
 deck = Deck()
 app = Flask(__name__)
 
+@app.route("/")
+def welcome():
+    return '<h2>Welcome to the Game of Deck Of Cards</h2>'
+
 @app.route("/deal")
 def deal():
     deck.deal()
-    return 'Deck is ready'
+    return '<h2>Deck is ready</h2>'
 
 @app.route("/shuffle")
 def shuffle():
     if len(deck.cards) > 0:
         deck.shuffle()
-        return 'Deck is shuffled'
+        return '<h2>Deck is shuffled</h2>'
     else:
-        return 'No cards to shuffle'
+        return '<h2>No cards to shuffle</h2>'
 
 @app.route("/drawCards")
 def drawCard():
