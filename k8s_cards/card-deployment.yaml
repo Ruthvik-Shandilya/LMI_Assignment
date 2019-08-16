@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: card-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: card
+  template:
+    metadata:
+      labels:
+        component: card
+    spec:
+      containers:
+        - name: card
+          image: ruthvik/deck-cards
+          ports:
+            - containerPort: 5000
